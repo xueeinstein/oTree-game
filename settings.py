@@ -113,6 +113,13 @@ SESSION_CONFIGS = [
     #     'num_demo_participants': ...,
     #     'app_sequence': ['...'],
     # }
+    {
+        'name': 'game',
+        'display_name': 'Game',
+        'num_demo_participants': 40,
+        # 'app_sequence': ['welcome', 'warm_up', 'game']
+        'app_sequence': ['welcome']
+    }
 ]
 
 # anything you put after the below line will override

@@ -1,0 +1,19 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Welcome to this experiment
+{% endblock %}
+
+{% block content %}
+    <p>Thank you for participating. Please do not start until instructed. </p>
+    <p>Thank you for participating. It is important that during this experiment you do not talk or make any noise that might disrupt others around you. If you have any questions, please raise your hand and the experimenter will answer your questions individually. </p>
+    <p>Your main task today is to complete set of questions and solve arithmetic problems. For showing up in time you will be paid 10 yuan. In addition, you will earn money depending on your decisions and performance. Please fill in the information and continue. </p>
+
+    {% for field in form %}
+        {% formfield field %}
+    {% endfor %}
+
+    {% next_button %}
+
+{% endblock %}
