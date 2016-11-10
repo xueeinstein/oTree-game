@@ -1,0 +1,20 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block title %}
+    Task instructions
+{% endblock %}
+
+{% block content %}
+    <p>In this experiment, you will be asked to add up sets of five double-digit integers such as the following: </p>
+    <p>50 + 24 + 39 + 86 + 21 = </p>
+    <p>The first round is a warm-up round for you to get familiar with the task while the rest of the rounds will be experimental rounds which will be used to calculate your earnings. </p>
+    <p>You are not allowed to use a calculator, but may write numbers down on scratch paper provided by us. The numbers are randomly drawn.</p>
+    <p>Your task in each round is to solve as many problems as you can within the time limit. Your earnings will depend on the number of correct problems and/or the specific compensation method applied to each experimental rounds. </p>
+    <p>At the end of the session one of the experimental rounds will be selected at random for payment.</p>
+    <p>Please make sure that you completely understand the instructions for the experiment. Once again, remember not to make any noise that might disturb others around you. If you have any questions, raise your hand and we will answer your questions individually.</p>
+
+    {% next_button %}
+
+{% endblock %}

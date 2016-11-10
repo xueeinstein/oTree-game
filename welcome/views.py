@@ -1,5 +1,5 @@
 from . import models
-from ._builtin import Page, WaitPage
+from ._builtin import Page
 
 
 class Info(Page):
@@ -7,6 +7,11 @@ class Info(Page):
     form_fields = ['q_stuID', 'q_age', 'q_gender', 'q_major']
 
 
+class Task_Intro(Page):
+    pass
+
+
 page_sequence = [
-    Info
+    Info,
+    Task_Intro
 ]
