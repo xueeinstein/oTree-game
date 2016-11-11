@@ -24,7 +24,7 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    q_stuID = models.PositiveIntegerField(verbose_name='What is your student ID')
+    q_stuID = models.PositiveIntegerField(verbose_name='What is your student ID?')
 
     q_age = models.PositiveIntegerField(verbose_name='What is your age?',
                                         choices=range(15, 36),
