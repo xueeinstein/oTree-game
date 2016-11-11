@@ -1,0 +1,39 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Warm-up Round
+{% endblock %}
+
+
+{% block content %}
+    <p>Now you will begin your warm-up round. You will have two minutes. Please use the keyboard to type in your answer into the box. When the time is up, the game will end automatically and you will be directed to the next page, which will show the number of problems you solved correctly. </p>
+
+    {% include "scripts/Score.html" %}
+
+    {% for q in q_ids %}
+        <div>
+            <span id="qid_{{ q }}"></span>
+            <input type="number" class="form-control" onfocus="this.oldvalue = this.value" onchange="updateScore(this, ansList, {{ q }})" />
+        </div>
+    {% endfor %}
+
+    <button type="button" onclick="set10()">Click Me!</button>
+    <input type="hidden" name="score" value="0" id="score_id" />
+    {{ form.score.errors }}
+
+    {% next_button %}
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var ansList = [];
+        for(var i = 1; i <= {{ q_num }}; i++) {
+            var question = $("#qid_" + i.toString())[0],
+                Q = generateQ();
+            question.innerHTML = Q.question;
+            ansList.push(Q.ans);
+        }
+    </script>
+{% endblock %}
