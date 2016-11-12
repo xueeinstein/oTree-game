@@ -117,8 +117,7 @@ SESSION_CONFIGS = [
         'name': 'game',
         'display_name': 'Game',
         'num_demo_participants': 4,
-        # 'app_sequence': ['welcome', 'warm_up', 'game']
-        'app_sequence': ['welcome', 'warm_up']
+        'app_sequence': ['welcome', 'warm_up', 'game']
     }
 ]
 

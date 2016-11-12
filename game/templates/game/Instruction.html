@@ -1,0 +1,41 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Round {{ round }}
+{% endblock %}
+
+{% block content %}
+    {% include instruction %}
+
+    {% if round != 2 and round != 3 %}
+        <p>Please select your payment method for this round:</p>
+        {% if round in method_ab %}
+            <ul id="method_selection">
+              <li><label><input type="radio" id="id_method_2" value="Method A" name="method" required=""> Method A</label></li>
+              <li><label><input type="radio" id="id_method_2" value="Method B" name="method" required=""> Method B</label></li>
+            </ul>
+        {% elif round == 5 %}
+            <ul id="method_selection">
+              <li><label><input type="radio" id="id_method_2" value="Method A" name="method" required=""> Method A</label></li>
+              <li><label><input type="radio" id="id_method_2" value="Method C" name="method" required=""> Method C</label></li>
+            </ul>
+        {% endif %}
+
+    {% elif round == 2 %}
+        <input type="hidden" name="method" value="Method A" />
+    {% elif round == 3 %}
+        <input type="hidden" name="method" value="Method B" />
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+        #method_selection li {
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}
+
