@@ -1,0 +1,17 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Round {{ round }} Result
+{% endblock %}
+
+{% block content %}
+    <p>You solved {{ score }} questions correctly.</p>
+
+    {% for field in form %}
+        {% formfield field %}
+    {% endfor %}
+
+    <p>If this round is chosen for the payment, and you have guessed your rank correctly, you will earn additional 4 yuan. </p>
+    {% next_button %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Round {{ round }}
+{% endblock %}
+
+{% block content %}
+    <p>Now you will begin Round {{ round }}. You will have 5 minutes.</p>
+
+    {% include "scripts/Score.html" %}
+
+    {% for q in q_ids %}
+        <div>
+            <span id="qid_{{ q }}"></span>
+            <input type="number" class="form-control" onfocus="this.oldvalue = this.value" onchange="updateScore(this, ansList, {{ q }})" />
+        </div>
+    {% endfor %}
+
+    <input type="hidden" name="score" value="0" id="score_id" />
+
+    {% next_button %}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var ansList = [];
+        for(var i = 1; i <= {{ q_num }}; i++) {
+            var question = $("#qid_" + i.toString())[0],
+                Q = generateQ();
+            question.innerHTML = Q.question;
+            ansList.push(Q.ans);
+        }
+    </script>
+{% endblock %}

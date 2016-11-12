@@ -31,3 +31,7 @@ class Group(BaseGroup):
 class Player(BasePlayer):
     score = models.IntegerField(initial=0)
     method = models.CharField(initial=None)
+    guess_rank = models.CharField(initial=None,
+                                  choices=['First', 'Second', 'Third', 'Fourth'],
+                                  verbose_name='Please guess your rank in this round:',
+                                  widget=widgets.RadioSelect())

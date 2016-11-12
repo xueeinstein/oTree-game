@@ -1,5 +1,5 @@
 from . import models
-from ._builtin import Page
+from ._builtin import Page, WaitPage
 
 
 class Instruction(Page):
@@ -15,6 +15,11 @@ class Instruction(Page):
         }
 
         return variables
+
+
+class GameWaitPage(WaitPage):
+    def after_all_players_arrive(self):
+        pass
 
 
 class Gaming(Page):
@@ -40,6 +45,18 @@ class Gaming(Page):
         return variables
 
 
+class Results(Page):
+    form_model = models.Player
+    form_fields = ['guess_rank']
+
+    def vars_for_template(self):
+        return {
+            'score': self.player.score
+        }
+
 page_sequence = [
-    Instruction
+    Instruction,
+    GameWaitPage,
+    Gaming,
+    Results
 ]
