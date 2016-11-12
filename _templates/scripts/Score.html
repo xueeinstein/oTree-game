@@ -1,0 +1,61 @@
+{% load staticfiles otree_tags %}
+
+{% block scripts %}
+    <script>
+        function generateQ() {
+            // generate arithmetic question
+            // adding up sets of five double-digit integers
+            var q_str = '',
+                curr_num = 0,
+                ans = 0;
+
+            for(var i = 0; i < 5; i++) {
+                curr_num = Math.floor(Math.random() * 90) + 10;
+                if(i < 4) {
+                    q_str += curr_num.toString() + ' + ';
+                } else {
+                    q_str += curr_num.toString() + ' =';
+                }
+                ans += curr_num;
+            }
+            return {
+                question: q_str,
+                ans: ans
+            };
+        }
+
+        function updateScore(numBox, ansList, idx) {
+            var oldVal = numBox.oldvalue,
+                newVal = numBox.value,
+                rightVal = ansList[idx - 1];
+
+            if(newVal == rightVal) {
+                // enter or correct to the right answer
+                addOneScore();
+            } else if(newVal != rightVal && oldVal == rightVal) {
+                // modify to the wrong answer
+                subOneScore();
+            }
+        }
+
+        function addOneScore() {
+            var score = $("#score_id")[0],
+                curr = parseInt(score.value) | 0;
+
+            score.value = curr + 1;
+        }
+
+        function subOneScore() {
+           var score = $("#score_id")[0],
+               curr = parseInt(score.value) | 0;
+
+           score.value = curr - 1;
+        }
+
+        function set10() {
+            var score = $("#score_id")[0];
+            score.value = 10;
+            alert(score.value);
+        }
+    </script>
+{% endblock %}

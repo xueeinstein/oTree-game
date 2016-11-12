@@ -22,6 +22,14 @@ class Warmup(Page):
         }
 
 
+class Results(Page):
+    def vars_for_template(self):
+        return {
+            'score': self.player.score
+        }
+
+
 page_sequence = [
-    Warmup
+    Warmup,
+    Results
 ]
