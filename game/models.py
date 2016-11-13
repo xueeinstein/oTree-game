@@ -5,6 +5,8 @@ from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
     Currency as c, currency_range
 )
+import random
+
 
 # record a global round number for Player
 round_num = 1
@@ -12,7 +14,7 @@ round_num = 1
 
 class Constants(BaseConstants):
     players_per_group = 4
-    num_rounds = 7
+    num_rounds = 1
     name_in_url = 'game'
 
 
