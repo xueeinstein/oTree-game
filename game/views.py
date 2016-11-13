@@ -94,6 +94,18 @@ class ShuffleWaitPage(WaitPage):
             F_players = [p for p in players if p.participant.vars['gender'] == 'Female']
             group_mat = generate_gender_gmat(M_players, F_players)
             self.subsession.set_group_matrix(group_mat)
+        elif self.round_number == 6:
+            # match players in row as a group
+            players = self.subsession.get_players().reverse()
+            new_group, group_mat, mem_num = [], [], 0
+            while players:
+                new_group.append(players.pop())
+                mem_num += 1
+                if mem_num == 4:
+                    group_mat.append(new_group)
+                    new_group, mem_num = [], 0
+
+            self.subsession.set_group_matrix(group_mat)
 
 
 class PayoffWaitPage(WaitPage):
