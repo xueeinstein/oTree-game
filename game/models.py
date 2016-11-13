@@ -25,13 +25,44 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    pass
+    def set_ranks_payoffs(self):
+        players = [self.get_player_by_id(i) for i in range(1, 5)]
+        sorted_players = sorted(players, key=lambda p: p.score, reverse=True)
+        for rank, p in enumerate(sorted_players):
+            if rank == 0:
+                p.rank = 'First'
+            elif rank == 1:
+                p.rank = 'Second'
+            elif rank == 2:
+                p.rank = 'Third'
+            elif rank == 3:
+                p.rank = 'Fourth'
+
+        # set payoff according to score, method
+        for p in players:
+            if p.method == 'Method A':
+                p.payoff = p.score
+            elif p.method == 'Method B':
+                if p.rank == 'First':
+                    p.payoff = 4 * p.score
+                else:
+                    p.payoff = 0
+            elif p.method == 'Method C':
+                if random.random() < 0.25:
+                    p.payoff = 4 * p.score
+                else:
+                    p.payoff = 0
+
+            # additional bonus if rank guessed is right
+            if p.rank == p.rank_guessed:
+                p.payoff += 4
 
 
 class Player(BasePlayer):
     score = models.IntegerField(initial=0)
     method = models.CharField(initial=None)
-    guess_rank = models.CharField(initial=None,
-                                  choices=['First', 'Second', 'Third', 'Fourth'],
-                                  verbose_name='Please guess your rank in this round:',
-                                  widget=widgets.RadioSelect())
+    rank_guessed = models.CharField(initial=None,
+                                    choices=['First', 'Second', 'Third', 'Fourth'],
+                                    verbose_name='Please guess your rank in this round:',
+                                    widget=widgets.RadioSelect())
+    rank = models.CharField(initial=None)

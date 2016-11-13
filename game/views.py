@@ -48,7 +48,7 @@ class Gaming(Page):
 
 class Results(Page):
     form_model = models.Player
-    form_fields = ['guess_rank']
+    form_fields = ['rank_guessed']
 
     def vars_for_template(self):
         return {
@@ -96,11 +96,17 @@ class ShuffleWaitPage(WaitPage):
             self.subsession.set_group_matrix(group_mat)
 
 
+class PayoffWaitPage(WaitPage):
+    def after_all_players_arrive(self):
+        self.group.set_ranks_payoffs()
+
+
 page_sequence = [
     ShuffleWaitPage,
     Instruction,
     GameWaitPage,
     Gaming,
-    Results
+    Results,
+    PayoffWaitPage
 ]
 
