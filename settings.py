@@ -54,7 +54,7 @@ AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
 
 # e.g. EUR, CAD, GBP, CHF, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'CNY'
-USE_POINTS = True
+USE_POINTS = False
 
 
 # e.g. en, de, fr, it, ja, zh-hans
@@ -117,7 +117,7 @@ SESSION_CONFIGS = [
         'name': 'game',
         'display_name': 'Game',
         'num_demo_participants': 4,
-        'app_sequence': ['welcome', 'warm_up', 'game']
+        'app_sequence': ['welcome', 'warm_up', 'game', 'payment_info']
     }
 ]
 

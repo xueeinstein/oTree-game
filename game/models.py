@@ -59,6 +59,12 @@ class Group(BaseGroup):
             if p.rank == p.rank_guessed:
                 p.payoff += 4
 
+            # record payoff in session so that it can be accessed in payment_info subsession
+            if 'payoffs' not in p.participant.vars.keys():
+                p.participant.vars['payoffs'] = []
+
+            p.participant.vars['payoffs'].append(p.payoff)
+
 
 class Player(BasePlayer):
     score = models.IntegerField(initial=0)
