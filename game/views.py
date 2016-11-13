@@ -1,5 +1,6 @@
 from . import models
 from ._builtin import Page, WaitPage
+import random
 
 
 class Instruction(Page):
@@ -54,9 +55,52 @@ class Results(Page):
             'score': self.player.score
         }
 
+
+def generate_gender_gmat(M_players, F_players):
+    """Generate gender-constraint random group"""
+    random.shuffle(M_players)
+    random.shuffle(F_players)
+    group_mat = []
+    new_group = []
+    mem_num = 0
+    while M_players:
+        new_group.append(M_players.pop())
+        mem_num += 1
+        if mem_num == 4:
+            group_mat.append(new_group)
+            new_group = []
+            mem_num = 0
+
+    while F_players:
+        new_group.append(F_players.pop())
+        mem_num += 1
+        if mem_num == 4:
+            group_mat.append(new_group)
+            new_group = []
+            mem_num = 0
+
+    random.shuffle(group_mat)
+    return group_mat
+
+
+class ShuffleWaitPage(WaitPage):
+    wait_for_all_groups = True
+
+    def after_all_players_arrive(self):
+        if self.round_number == 7:
+            # randomly match with three other players of the same gender
+            players = self.subsession.get_players()
+            M_players = [p for p in players if p.participant.vars['gender'] == 'Male']
+            F_players = [p for p in players if p.participant.vars['gender'] == 'Female']
+            group_mat = generate_gender_gmat(M_players, F_players)
+            self.subsession.set_group_matrix(group_mat)
+
+
 page_sequence = [
+    ShuffleWaitPage,
     Instruction,
     GameWaitPage,
     Gaming,
     Results
 ]
+
