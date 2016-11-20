@@ -23,8 +23,6 @@ class Subsession(BaseSubsession):
         global round_num
         round_num = self.round_number
 
-        self.group_randomly()
-
 
 class Group(BaseGroup):
     def set_ranks_payoffs(self):

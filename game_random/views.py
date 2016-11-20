@@ -83,30 +83,56 @@ def generate_gender_gmat(M_players, F_players):
     return group_mat
 
 
+def generate_2f2m_group_matrix(M_players, F_players):
+    """Generate random group with 2 males and 2 females"""
+    random.shuffle(M_players)
+    random.shuffle(F_players)
+    group_mat = []
+    new_group = []
+    mem_num = 0
+    while M_players and F_players:
+        new_group.append(M_players.pop())
+        new_group.append(F_players.pop())
+        mem_num += 2
+        if mem_num == 4:
+            random.shuffle(new_group)
+            group_mat.append(new_group)
+            new_group, mem_num = [], 0
+
+    while M_players:
+        new_group.append(M_players.pop())
+        mem_num += 1
+        if mem_num == 4:
+            random.shuffle(new_group)
+            group_mat.append(new_group)
+            new_group, mem_num = [], 0
+
+    while F_players:
+        new_group.append(F_players.pop())
+        mem_num += 1
+        if mem_num == 4:
+            random.shuffle(new_group)
+            group_mat.append(new_group)
+            new_group, mem_num = [], 0
+
+    random.shuffle(group_mat)
+    return group_mat
+
+
 class ShuffleWaitPage(WaitPage):
     wait_for_all_groups = True
 
     def after_all_players_arrive(self):
-        if self.round_number == 7:
+        if self.round_number != 6:
             # randomly match with three other players of the same gender
             players = self.subsession.get_players()
             M_players = [p for p in players if p.participant.vars['gender'] == 'Male']
             F_players = [p for p in players if p.participant.vars['gender'] == 'Female']
-            group_mat = generate_gender_gmat(M_players, F_players)
+            group_mat = generate_2f2m_group_matrix(M_players, F_players)
             self.subsession.set_group_matrix(group_mat)
         elif self.round_number == 6:
-            # FIXME: don't work for in row group
-            # match players in row as a group
-            players = self.subsession.get_players().reverse()
-            new_group, group_mat, mem_num = [], [], 0
-            while players:
-                new_group.append(players.pop())
-                mem_num += 1
-                if mem_num == 4:
-                    group_mat.append(new_group)
-                    new_group, mem_num = [], 0
-
-            self.subsession.set_group_matrix(group_mat)
+            # using default group: fixed in row group
+            pass
 
 
 class PayoffWaitPage(WaitPage):
