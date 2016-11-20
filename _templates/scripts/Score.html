@@ -10,7 +10,7 @@
                 curr_num = 0,
                 ans = 0,
                 timestamp = new Date().getTime(),
-                timeint = Math.floor(a / 1000000),
+                timeint = Math.floor(timestamp / 1000000),
                 seed = o_seed + timeint.toString();
 
             Math.seedrandom(seed);
