@@ -15,7 +15,7 @@ round_num = 1
 class Constants(BaseConstants):
     players_per_group = 4
     num_rounds = 7
-    name_in_url = 'game'
+    name_in_url = 'game_random'
 
 
 class Subsession(BaseSubsession):

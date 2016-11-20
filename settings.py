@@ -114,10 +114,10 @@ SESSION_CONFIGS = [
     #     'app_sequence': ['...'],
     # }
     {
-        'name': 'game',
-        'display_name': 'Game',
+        'name': 'game_random',
+        'display_name': 'Game_random',
         'num_demo_participants': 4,
-        'app_sequence': ['welcome', 'warm_up', 'game', 'payment_info']
+        'app_sequence': ['welcome', 'warm_up', 'game_random', 'payment_info']
     }
 ]
 

@@ -12,7 +12,7 @@ class Instruction(Page):
         variables = {
             'round': round_id,
             'method_ab': [1, 4, 6, 7],
-            'instruction': 'game/Instruction_R' + str(round_id) + '.html'
+            'instruction': 'game_random/Instruction_R' + str(round_id) + '.html'
         }
 
         return variables
