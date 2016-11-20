@@ -27,12 +27,10 @@ class Player(BasePlayer):
     q_stuID = models.PositiveIntegerField(verbose_name='What is your student ID?')
 
     q_age = models.PositiveIntegerField(verbose_name='What is your age?',
-                                        choices=range(15, 36),
+                                        choices=range(15, 41),
                                         initial=None)
 
     q_gender = models.CharField(initial=None,
                                 choices=['Male', 'Female'],
                                 verbose_name='What is your gender?',
                                 widget=widgets.RadioSelect())
-
-    q_major = models.CharField(verbose_name="What is your major?")
