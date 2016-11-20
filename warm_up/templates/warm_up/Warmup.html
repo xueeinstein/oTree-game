@@ -31,7 +31,7 @@
         var ansList = [];
         for(var i = 1; i <= {{ q_num }}; i++) {
             var question = $("#qid_" + i.toString())[0],
-                Q = generateQ();
+                Q = generateQ("Warmup_" + i.toString());
             question.innerHTML = Q.question;
             ansList.push(Q.ans);
         }

@@ -1,14 +1,19 @@
 {% load staticfiles otree_tags %}
 
 {% block scripts %}
+    <script src="{% static "js/seedrandom.min.js" %}"></script>
     <script>
-        function generateQ() {
+        function generateQ(o_seed) {
             // generate arithmetic question
             // adding up sets of five double-digit integers
             var q_str = '',
                 curr_num = 0,
-                ans = 0;
+                ans = 0,
+                timestamp = new Date().getTime(),
+                timeint = Math.floor(a / 1000000),
+                seed = o_seed + timeint.toString();
 
+            Math.seedrandom(seed);
             for(var i = 0; i < 5; i++) {
                 curr_num = Math.floor(Math.random() * 90) + 10;
                 if(i < 4) {
