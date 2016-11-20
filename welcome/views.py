@@ -1,6 +1,9 @@
 from . import models
 from ._builtin import Page
 
+class First(Page):
+    pass
+
 
 class Info(Page):
     form_model = models.Player
@@ -16,6 +19,7 @@ class Task_Intro(Page):
 
 
 page_sequence = [
+    First,
     Info,
     Task_Intro
 ]
