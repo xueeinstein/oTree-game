@@ -118,6 +118,12 @@ SESSION_CONFIGS = [
         'display_name': 'Game_random',
         'num_demo_participants': 4,
         'app_sequence': ['welcome', 'warm_up', 'game_random', 'payment_info']
+    },
+    {
+        'name': 'game_row',
+        'display_name': 'Game_row',
+        'num_demo_participants': 4,
+        'app_sequence': ['welcome', 'warm_up', 'game_row', 'payment_info']
     }
 ]
 

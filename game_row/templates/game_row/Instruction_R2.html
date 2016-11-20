@@ -1,0 +1,8 @@
+{% load staticfiles otree_tags %}
+
+{% block content %}
+    <p>Round 2 will last 5 minutes. You are currently matched with 3 other participants at random. For this round, Method A will be used for calculating your earnings. </p>
+    <br />
+    {% include "game_random/Method_A.html" %}
+    <br />
+{% endblock %}
