@@ -95,6 +95,7 @@ class ShuffleWaitPage(WaitPage):
             group_mat = generate_gender_gmat(M_players, F_players)
             self.subsession.set_group_matrix(group_mat)
         elif self.round_number == 6:
+            # FIXME: don't work for in row group
             # match players in row as a group
             players = self.subsession.get_players().reverse()
             new_group, group_mat, mem_num = [], [], 0
