@@ -11,10 +11,10 @@ class Payment_Info(Page):
     def vars_for_template(self):
         selected_round = self.player.selected_round
         payoff = self.participant.vars['payoffs'][selected_round - 1]
-        print(self.participant.vars['payoffs'])
-        print(payoff)
+        payoff += self.session.config['participation_fee']
+        self.player.payoff = payoff
         return {
-            'payoff': payoff
+            'payment': payoff
         }
 
 
