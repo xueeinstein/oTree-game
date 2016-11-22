@@ -1,7 +1,7 @@
 oTree-game
 =================
 
-** Server Setup
+##Server Setup
 
 If you just do local tests, after installed _oTree_, just execute `otree runserver` from terminal.
 
@@ -14,5 +14,5 @@ export OTREE_PRODUCTION=1
 otree runprodserver
 ```
 
-__Notice__: the fist command is to disable debug information, so when you want to get the debug information back, just execute `export OTREE_PRODUCTION=0`
-from terminal.
+__Notice__: the first command is to disable debug information, so when you want to get the debug information back, just execute `export OTREE_PRODUCTION=0`
+from the same terminal.
