@@ -11,7 +11,7 @@
     {% include "scripts/Score.html" %}
 
     {% for q in q_ids %}
-        <div>
+        <div class="form-inline form-group">
             <span id="qid_{{ q }}"></span>
             <input type="number" class="form-control" onfocus="this.oldvalue = this.value" onchange="updateScore(this, ansList, {{ q }})" />
         </div>
