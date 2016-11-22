@@ -23,5 +23,5 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     selected_round = models.PositiveIntegerField(verbose_name='Which round to be paid?',
-                                                 choices=range(1, 8),
+                                                 choices=range(1, 7),
                                                  initial=None)

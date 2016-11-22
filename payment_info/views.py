@@ -6,6 +6,14 @@ class Select_Round(Page):
     form_model = models.Player
     form_fields = ['selected_round']
 
+    def vars_for_template(self):
+        params = {
+            'payoffs': self.participant.vars['payoffs'],
+            'participation_fee': self.session.config['participation_fee']
+        }
+        params['rounds'] = range(1, len(params['payoffs']) + 1)
+        return params
+
 
 class Payment_Info(Page):
     def vars_for_template(self):

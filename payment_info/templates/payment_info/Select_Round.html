@@ -6,6 +6,25 @@
 {% endblock %}
 
 {% block content %}
+    <p>All rounds payment:</p>
+    <table class="table table-bordered">
+      <thead class="thead-inverse">
+        <tr>
+          <th>Participation Fee</th>
+          {% for r_id in rounds %}
+          <th>Round {{ r_id }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ participation_fee }}</td>
+          {% for payoff in payoffs %}
+          <td>{{ payoff }}</td>
+          {% endfor %}
+        </tr>
+      </tbody>
+    </table>
     {% for field in form %}
         {% formfield field %}
     {% endfor %}
