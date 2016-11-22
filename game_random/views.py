@@ -130,7 +130,7 @@ class ShuffleWaitPage(WaitPage):
             F_players = [p for p in players if p.participant.vars['gender'] == 'Female']
             group_mat = generate_2f2m_group_matrix(M_players, F_players)
             self.subsession.set_group_matrix(group_mat)
-        elif self.round_number == 6:
+        else:
             # using default group: fixed in row group
             pass
 
