@@ -63,6 +63,12 @@ class Group(BaseGroup):
 
             p.participant.vars['payoffs'].append(p.payoff)
 
+            # record scores of each round in session so that it can be accessed in payment_info subsession
+            if 'scores' not in p.participant.vars.keys():
+                p.participant.vars['scores'] = []
+
+            p.participant.vars['scores'].append(p.score)
+
 
 class Player(BasePlayer):
     score = models.IntegerField(initial=0)

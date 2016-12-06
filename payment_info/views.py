@@ -8,10 +8,10 @@ class Select_Round(Page):
 
     def vars_for_template(self):
         params = {
-            'payoffs': self.participant.vars['payoffs'],
+            'scores': self.participant.vars['scores'],
             'participation_fee': self.session.config['participation_fee']
         }
-        params['rounds'] = range(1, len(params['payoffs']) + 1)
+        params['rounds'] = range(1, len(params['scores']) + 1)
         return params
 
 
