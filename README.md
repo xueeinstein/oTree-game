@@ -1,6 +1,12 @@
 oTree-game
 =================
 
+##Introduction
+
+This is a social experiment project based on [oTree](http://www.otree.org/) in which participants are asked to do arithmetical exercises, i.e. sum up 5 numbers. Participants also have the chance to select different bonus rules which can reflect how they think when compete with others.
+
+All in all, this project is good demo project of _oTree_ to demonstrate how to use this framework build multiple rounds, multiple participants, and multiple groups social experiments.
+
 ##Server Setup
 
 If you just do local tests, after installed _oTree_, just execute `otree runserver` from terminal.
